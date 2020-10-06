@@ -1,0 +1,104 @@
+<noscript>
+    Para completa funcionalidade deste site é necessário habilitar o JavaScript.
+    Aqui estão as <a href="https://www.enable-javascript.com/pt/" target="_blank">
+    instruções de como habilitar o JavaScript no seu navegador</a>.
+</noscript>
+
+<style>
+	.f{
+		background-color: orange;
+		width: 300;
+		height: 150;
+		border: solid 1px black;
+	}
+</style>
+
+<nav id='menu'>
+	<button id='contrato'>CONTRATO</button>
+	<button id='fatura'>FATURA</button>
+	<button id='recibo'>RECIBO</button>	
+</nav>
+
+<div id='all'>
+	<div class='f' id='contrato'>CONTRATO</div>
+	<div class='f' id='fatura'>FATURA</div>
+	<div class='f' id='recibo'>RECIBO</div>
+</div>
+
+<script>
+
+	//Verifica se aceita ajax
+	function verificaNavegador() {
+		var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+   
+		var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+		var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+	   
+		var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+		var isIE = /*@cc_on!@*/false || !!document.documentMode;   // At least IE6
+		if (isOpera) {
+			alert('Nosso aplicativo funciona melhor no Chrome!');
+			console.log('Opera');
+			return 1;
+		}
+		else if (isFirefox) {
+			alert('Nosso aplicativo funciona melhor no Chrome!');
+			console.log('Firefox');
+			return 2;
+		}
+		else if (isChrome) {
+			console.log('Chrome');
+			return 3;
+		}
+		else if (isSafari) {4
+			alert('Nosso aplicativo funciona melhor no Chrome!');
+			console.log('Safari');
+			return 4;
+		}
+		else if (isIE) {
+			alert('Nosso aplicativo funciona melhor no Chrome!');
+			console.log('IE');
+			return 5;
+		}
+		else {
+			alert('Nosso aplicativo funciona melhor no Chrome!');
+			return 0;
+		}
+
+	}
+	verificaNavegador();
+	
+
+
+
+
+
+
+	function tableshowhide(a,b,c) {
+
+		len = menu.childElementCount;
+		console.log("Total de elementos encontrados: ", len);
+		
+		closeall();
+		
+		for(i=0;i<len;i++) {
+			menu.children[i].onclick=function() {
+				closeall();
+				all.children[this.id].style.display="block";
+			}
+		}
+	
+		function closeall() {			
+			for (i=0; i<all.childElementCount; i++) {
+				all.children[i].style.display="none";
+			}
+		}
+		
+		menu.children[c].click();
+	
+	}
+	
+	
+	tableshowhide("contrato","faura","recibo");
+
+</script>
